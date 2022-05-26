@@ -22,7 +22,7 @@ class SortCSV(ABC):
     def sortData(self):
         pass
 
-class Sorted(SortCSV):
+class SortData(SortCSV):
     def  __init__(self, data):
         self.data = data
     def sortData(self):
