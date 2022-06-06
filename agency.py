@@ -129,3 +129,30 @@ with open(filename, 'w') as csvfile:
 	
 	# writing the data rows
 	csvwriter.writerows(rows)
+
+
+# Search algorithms
+
+
+class SearchCSV(CSVSort):
+    def __init__(self,lys, val, get):
+        self.lys =lys
+        self.val =val
+        self.get = get
+
+    def BinarySearch(self):
+        first = 0
+        last = len(self.lys)-1
+
+        while first <= last:
+            mid = (first +last) //2
+            if self.val == self.lys[mid][self.get]:
+                return mid
+            else:
+                if self.val < self.lys[mid][self.get]:
+                   last = mid -1 
+                if self.val > self.lys[mid][self.get]:              
+                    first = mid +1
+
+    def __str__(self) -> str:    
+        print(self.val)
