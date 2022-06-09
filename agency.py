@@ -114,8 +114,7 @@ rows =  [['5336782189', 'FOR_SALE', 'House for sale', '$','$600000','forsale','F
         ['23434456', 'FOR_SALE', 'Land for sale', '$','$4500000','Null','FALSE','5'],
         ['112766566', 'FOR_SALE', 'House for sale', '$','$4230000','Forsale','TRUE','7'],
         ['748378846', 'FOR_SALE', 'New', '$','$33078789','Null','FALSE','4'],
-        ['564876872', 'FOR_SALE', 'House for sale', '$','$7493789','Forsale','TRUE','3'],
-        ['884938394', 'FOR_SALE', 'Active', '$','$6876878','Null','FALSE','4']]
+
 
 # name of csv file
 filename = "realstatehouse.csv"
@@ -130,3 +129,30 @@ with open(filename, 'w') as csvfile:
 	
 	# writing the data rows
 	csvwriter.writerows(rows)
+
+
+# Search algorithms
+
+
+class SearchCSV(CSVSort):
+    def __init__(self,lys, val, get):
+        self.lys =lys
+        self.val =val
+        self.get = get
+
+    def BinarySearch(self):
+        first = 0
+        last = len(self.lys)-1
+
+        while first <= last:
+            mid = (first +last) //2
+            if self.val == self.lys[mid][self.get]:
+                return mid
+            else:
+                if self.val < self.lys[mid][self.get]:
+                   last = mid -1 
+                if self.val > self.lys[mid][self.get]:              
+                    first = mid +1
+
+    def __str__(self) -> str:    
+        print(self.val)
